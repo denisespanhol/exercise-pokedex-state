@@ -10,6 +10,7 @@ class Pokedex extends React.Component {
     
     this.state = {
       thisPokemon: 0,
+      typePokemon: '',
     }
   }
 
@@ -28,8 +29,12 @@ class Pokedex extends React.Component {
       }),)
     }
   }
-    
-    
+
+  /* compareByType(event) {
+    this.setState(() => ({
+      typePokemon: event.target.value,
+    }),
+  )} */
 
   render() {
     const { pokemons } = this.props;
@@ -37,9 +42,12 @@ class Pokedex extends React.Component {
       <div className="pokedex">
         {pokemons.filter((pokemon, index) => pokemons[index] === pokemons[this.state.thisPokemon] ).map((pokemon) => <Pokemon key={pokemon.id} pokemon={pokemon} />)}
         <button onClick={ this.comparePokemon }>Next!</button>
+        <button value='Fire' onClick={ this.compareByType }>Fire</button>
       </div>
     );
   }
 };
+
+/* pokemons.filter((pokemon, index) => pokemons[index] === pokemons[this.state.thisPokemon] ).map((pokemon) => <Pokemon key={pokemon.id} pokemon={pokemon} />) */
 
 export default Pokedex;
